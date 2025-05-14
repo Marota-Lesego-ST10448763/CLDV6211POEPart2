@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EventEase.Models.Booking>
+@{
+    ViewData["Title"] = "Bookings";
+    var alert = ViewData["Alert"]?.ToString();
+    var alertType = ViewData["AlertType"]?.ToString() ?? "info";
+}
+
+<h2 class="mb-4">Bookings</h2>
+
+@if (!string.IsNullOrEmpty(alert))
+{
+    <div class="alert alert-@alertType alert-dismissible fade show" role="alert">
+        @alert
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search by Booking ID..." />
+        <button type="submit" class="btn btn-brown">Search</button>
+    </div>
+</form>
+
+<a asp-action="Create" class="btn btn-brown mb-3">Add Booking</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Event</th>
+            <th>Venue</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingID</td>
+                <td>@booking.Event?.EventName</td>
+                <td>@booking.Venue?.VenueName</td>
+                <td>@booking.BookingDate.ToShortDateString()</td>
+                <td>@booking.BookingDate.ToShortTimeString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@booking.BookingID" class="btn btn-info btn-sm me-1">Details</a>
+                    <a asp-action="Edit" asp-route-id="@booking.BookingID" class="btn btn-warning btn-sm me-1">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@booking.BookingID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

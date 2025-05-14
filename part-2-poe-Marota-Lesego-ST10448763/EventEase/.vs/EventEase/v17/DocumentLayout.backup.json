@@ -1,0 +1,197 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\migrations\\20250514172937_removeeventtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:migrations\\20250514172937_removeeventtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\views\\event\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:views\\event\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\views\\event\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:views\\event\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\views\\event\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:views\\event\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\views\\event\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:views\\event\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\controllers\\venuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:controllers\\venuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\views\\event\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:views\\event\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|c:\\users\\lab_services_student\\desktop\\part-1-poe-marota-lesego-st10448763\\eventease\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F9B3E45-3E93-4187-A189-6C83241CE489}|EventEase.csproj|solutionrelative:controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250514172937_RemoveEventType.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Migrations\\20250514172937_RemoveEventType.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250514172937_RemoveEventType.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Migrations\\20250514172937_RemoveEventType.cs",
+              "RelativeToolTip": "Migrations\\20250514172937_RemoveEventType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T17:29:37.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Event\\Index.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Index.cshtml",
+              "RelativeToolTip": "Views\\Event\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T17:13:58.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Event\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Event\\Edit.cshtml",
+              "ViewState": "AgIAACUAAAAAMDMzMzMLwDwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T17:13:56.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Event\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Event\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T17:13:54.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Models\\Event.cs",
+              "RelativeDocumentMoniker": "Models\\Event.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Models\\Event.cs",
+              "RelativeToolTip": "Models\\Event.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:58:53.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Event\\Create.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Create.cshtml",
+              "RelativeToolTip": "Views\\Event\\Create.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T16:55:37.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VenueController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\VenueController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VenueController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\VenueController.cs",
+              "RelativeToolTip": "Controllers\\VenueController.cs",
+              "ViewState": "AgIAACUAAAAANjMzMzMDwDEAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:35:01.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:34:57.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\EventController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EventController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\EventController.cs",
+              "RelativeToolTip": "Controllers\\EventController.cs",
+              "ViewState": "AgIAAGUAAABgZmZmZmYrwG4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:34:56.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Event\\Details.cshtml",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Views\\Event\\Details.cshtml",
+              "RelativeToolTip": "Views\\Event\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T17:16:45.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\part-1-poe-Marota-Lesego-ST10448763\\EventEase\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Controllers\\BookingController.cs",
+              "ViewState": "AgIAAJYAAAAAnpmZmRkdwKEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T16:34:55.747Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

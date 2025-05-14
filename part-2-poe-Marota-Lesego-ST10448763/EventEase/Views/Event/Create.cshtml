@@ -1,0 +1,57 @@
+﻿@model EventEase.Models.Event
+@{
+    ViewData["Title"] = "Add Event";
+}
+
+<h2 class="text-brown">Add Event</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="EventName" class="form-label">Event Name</label>
+        <input asp-for="EventName" class="form-control" />
+        <span asp-validation-for="EventName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label">Event Type</label>
+        <input asp-for="Type" class="form-control" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="VenueID" class="form-label">Venue</label>
+        <select asp-for="VenueID" asp-items="ViewBag.VenueId" class="form-select"></select>
+        <span asp-validation-for="VenueID" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EventDateTime" class="form-label">Date & Time</label>
+        <input asp-for="EventDateTime" type="datetime-local" class="form-control" />
+        <span asp-validation-for="EventDateTime" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-plus-circle"></i> Create Event
+    </button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    .text-brown {
+        color: #8B4513;
+    }
+</style>

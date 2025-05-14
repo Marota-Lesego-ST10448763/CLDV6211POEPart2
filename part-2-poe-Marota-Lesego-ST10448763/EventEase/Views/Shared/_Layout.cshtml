@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EventEase</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- Custom Theme Styling -->
+    <style>
+        body {
+            background-color: #f5f5dc; /* Beige */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #6b4226; /* Brown */
+        }
+
+            .navbar .nav-link, .navbar .navbar-brand {
+                color: #fff;
+            }
+
+                .navbar .nav-link:hover {
+                    color: #e0cda9; /* Light beige on hover */
+                }
+
+        /* Buttons */
+        .btn-brown {
+            background-color: #6b4226;
+            color: #fff;
+            border: none;
+        }
+
+            .btn-brown:hover {
+                background-color: #5a331f;
+                color: #fff;
+            }
+
+        /* Table Styling */
+        table.table {
+            background-color: #fff8dc;
+            border: 1px solid #d2b48c;
+        }
+
+        table th {
+            background-color: #deb887;
+            color: #3e2723;
+        }
+
+        table td {
+            color: #3e2723;
+        }
+
+        /* Alerts */
+        .alert-success {
+            background-color: #d0e9c6;
+            color: #3c763d;
+        }
+
+        .alert-danger {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">EventEase</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                <!-- Left-aligned links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Venue")">Venues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Event")">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Booking")">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Consolidated", "Booking")">Consolidated Bookings</a>
+                    </li>
+                </ul>
+
+                <!-- Right-aligned link -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Privacy", "Home")">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mt-4">
+
+        <!-- Alert Messages -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Render View -->
+        @RenderBody()
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

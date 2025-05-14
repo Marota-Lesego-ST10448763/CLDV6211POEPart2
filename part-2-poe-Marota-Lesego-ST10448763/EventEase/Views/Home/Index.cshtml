@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Welcome to EventEase";
+}
+
+<div class="hero-section">
+    <div class="hero-text">
+        <h1 class="display-4 fw-bold">Welcome to EventEase</h1>
+        <p class="lead">Your Perfect Event, the Perfect Venue, Made Easy!</p>
+        <a href="@Url.Action("Index", "Venue")" class="btn btn-lg btn-brown">
+            View Venues
+        </a>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: url('/images/event-bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding: 30px;
+        max-width: 700px;
+        color: black;
+    }
+
+        .hero-text h1 {
+            font-size: 3rem;
+        }
+
+    .btn-brown {
+        background-color: #8B4513;
+        color: white;
+        border: 1px solid #8B4513;
+    }
+
+        .btn-brown:hover {
+            background-color: #A0522D;
+            border-color: #A0522D;
+        }
+</style>

@@ -1,0 +1,49 @@
+﻿@model EventEase.Models.Venue
+@{
+    ViewData["Title"] = "Edit Venue";
+}
+
+<h2>Edit Venue</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="VenueID" />
+
+    <div class="mb-3">
+        <label asp-for="VenueName" class="form-label"></label>
+        <input asp-for="VenueName" class="form-control" />
+        <span asp-validation-for="VenueName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Location" class="form-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Capacity" class="form-label"></label>
+        <input asp-for="Capacity" class="form-control" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <div class="mb-2">
+            <img src="@Model.ImageUrl" style="height: 80px;" class="shadow-sm rounded" />
+        </div>
+    }
+
+    <div class="mb-3">
+        <label class="form-label">Upload New Image (optional)</label>
+        <input type="file" name="ImageFile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2"><i class="fas fa-arrow-left"></i> Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

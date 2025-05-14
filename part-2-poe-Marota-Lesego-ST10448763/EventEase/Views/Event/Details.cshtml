@@ -1,0 +1,23 @@
+﻿@model EventEase.Models.Event
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<h2>Event Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.EventName</h5>
+        <!-- <p><strong>Type:</strong> Model.Type</p> -->
+        <p><strong>Description:</strong> @Model.Description</p>
+        <p><strong>Date:</strong> @Model.EventDateTime.ToShortDateString()</p>
+        <p><strong>Time:</strong> @Model.EventDateTime.ToShortTimeString()</p>
+        <p><strong>Venue:</strong> @Model.Venue?.VenueName</p>
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <p><img src="@Model.ImageUrl" class="img-thumbnail" style="max-height: 250px;" /></p>
+        }
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>

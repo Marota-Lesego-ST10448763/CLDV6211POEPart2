@@ -1,0 +1,20 @@
+﻿@model EventEase.Models.Venue
+@{
+    ViewData["Title"] = "Venue Details";
+}
+
+<h2>Venue Details</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">@Model.VenueName</h5>
+        <p><strong>Location:</strong> @Model.Location</p>
+        <p><strong>Capacity:</strong> @Model.Capacity</p>
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" class="img-fluid rounded shadow-sm" style="max-height: 300px;" />
+        }
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3"><i class="fas fa-arrow-left"></i> Back to List</a>
