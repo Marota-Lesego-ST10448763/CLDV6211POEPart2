@@ -12,6 +12,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>EventEase.Models.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
-    <NameOfLastUsedPublishProfile>C:\Users\lab_services_student\Desktop\part-1-poe-Marota-Lesego-ST10448763\EventEase\Properties\PublishProfiles\EventEaseBookSystem - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\lab_services_student\Desktop\CLDV6211POEPart2\part-2-poe-Marota-Lesego-ST10448763\EventEase\Properties\PublishProfiles\EventEaseBookingSystemApp - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

@@ -16,6 +16,9 @@ namespace EventEase.Models
 
         public string ImageUrl { get; set; } = string.Empty;
 
+        [Required, MaxLength(20)]
+        public string AvailabilityStatus { get; set; } = "Available";
+
         public ICollection<Event> Events { get; set; } = new List<Event>();
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }

@@ -15,29 +15,52 @@ namespace EventEase.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index(string search, int? eventTypeId, DateTime? startDate, DateTime? endDate, string availability)
         {
-            var bookings = _context.Bookings.Include(b => b.Event).Include(b => b.Venue).AsQueryable();
+            var bookings = _context.Bookings
+                .Include(b => b.Event)
+                    .ThenInclude(e => e.EventType)
+                .Include(b => b.Venue)
+                .AsQueryable();
+
             if (!string.IsNullOrEmpty(search) && int.TryParse(search, out int bookingID))
             {
                 bookings = bookings.Where(b => b.BookingID == bookingID);
             }
+
+            if (eventTypeId.HasValue)
+            {
+                bookings = bookings.Where(b => b.Event.EventTypeID == eventTypeId.Value);
+            }
+
+            if (startDate.HasValue)
+            {
+                bookings = bookings.Where(b => b.BookingDate >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                bookings = bookings.Where(b => b.BookingDate <= endDate.Value);
+            }
+
+            if (!string.IsNullOrEmpty(availability))
+            {
+                bookings = bookings.Where(b => b.Venue.AvailabilityStatus == availability);
+            }
+
+            ViewBag.EventTypes = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name");
+            ViewBag.AvailabilityOptions = new SelectList(new[] { "Available", "Unavailable" });
+
             ViewData["Alert"] = TempData["Alert"];
             ViewData["AlertType"] = TempData["AlertType"];
             return View(await bookings.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int? id)
+        // ✅ NEW: GET: Booking/Create
+        public async Task<IActionResult> Create()
         {
-            if (id == null) return NotFound();
-            var booking = await _context.Bookings.Include(b => b.Event).Include(b => b.Venue).FirstOrDefaultAsync(m => m.BookingID == id);
-            return booking == null ? NotFound() : View(booking);
-        }
-
-        public IActionResult Create()
-        {
-            ViewBag.Events = new SelectList(_context.Events, "EventID", "EventName");
-            ViewBag.Venues = new SelectList(_context.Venues, "VenueID", "VenueName");
+            ViewBag.Events = new SelectList(await _context.Events.ToListAsync(), "EventID", "EventName");
+            ViewBag.Venues = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName");
             return View();
         }
 
@@ -45,17 +68,16 @@ namespace EventEase.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Booking booking)
         {
-            ViewBag.EventID = new SelectList(await _context.Events.ToListAsync(), "EventID", "EventName", booking.EventID);
-            ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", booking.VenueID);
+            ViewBag.Events = new SelectList(await _context.Events.ToListAsync(), "EventID", "EventName", booking.EventID);
+            ViewBag.Venues = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", booking.VenueID);
 
-            //Check for bookings on the same day (ignoring time)
             bool isDuplicate = await _context.Bookings.AnyAsync(b =>
                 b.VenueID == booking.VenueID &&
                 b.BookingDate.Date == booking.BookingDate.Date);
 
             if (isDuplicate)
             {
-                ModelState.AddModelError(string.Empty, "Ths venue has already been booked on the selected date.");
+                ModelState.AddModelError(string.Empty, "This venue has already been booked on the selected date.");
                 return View(booking);
             }
 
@@ -63,15 +85,13 @@ namespace EventEase.Controllers
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                TempData["Alert"] = "Booking creation successfully.";
+                TempData["Alert"] = "Booking created successfully.";
                 TempData["AlertType"] = "success";
                 return RedirectToAction(nameof(Index));
             }
 
             return View(booking);
         }
-
-
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -90,10 +110,9 @@ namespace EventEase.Controllers
             if (id != booking.BookingID)
                 return NotFound();
 
-            ViewBag.EventID = new SelectList(await _context.Events.ToListAsync(), "EventID", "EventName", booking.EventID);
-            ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", booking.VenueID);
+            ViewBag.Events = new SelectList(await _context.Events.ToListAsync(), "EventID", "EventName", booking.EventID);
+            ViewBag.Venues = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", booking.VenueID);
 
-            //Prevent booking clash on the same day (excluding current booking)
             bool isDuplicate = await _context.Bookings.AnyAsync(b =>
                 b.VenueID == booking.VenueID &&
                 b.BookingDate.Date == booking.BookingDate.Date &&
@@ -111,7 +130,7 @@ namespace EventEase.Controllers
                 {
                     _context.Update(booking);
                     await _context.SaveChangesAsync();
-                    TempData["Alert"] = "Booking update successfully.";
+                    TempData["Alert"] = "Booking updated successfully.";
                     TempData["AlertType"] = "success";
                     return RedirectToAction(nameof(Index));
                 }
@@ -125,7 +144,6 @@ namespace EventEase.Controllers
 
             return View(booking);
         }
-
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -143,19 +161,50 @@ namespace EventEase.Controllers
             {
                 _context.Bookings.Remove(booking);
                 await _context.SaveChangesAsync();
-                TempData["Alert"] = "Booking deletion successfully.";
+                TempData["Alert"] = "Booking deleted successfully.";
                 TempData["AlertType"] = "success";
             }
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Consolidated(string search)
+        public async Task<IActionResult> Consolidated(string search, int? eventTypeId, DateTime? startDate, DateTime? endDate, string availability)
         {
-            var bookings = _context.Bookings.Include(b => b.Event).Include(b => b.Venue).AsQueryable();
+            var bookings = _context.Bookings
+                .Include(b => b.Event)
+                    .ThenInclude(e => e.EventType)
+                .Include(b => b.Venue)
+                .AsQueryable();
+
             if (!string.IsNullOrEmpty(search))
             {
-                bookings = bookings.Where(b => b.BookingID.ToString().Contains(search) || b.Event.EventName.Contains(search));
+                bookings = bookings.Where(b =>
+                    b.BookingID.ToString().Contains(search) ||
+                    b.Event.EventName.Contains(search));
             }
+
+            if (eventTypeId.HasValue)
+            {
+                bookings = bookings.Where(b => b.Event.EventTypeID == eventTypeId.Value);
+            }
+
+            if (startDate.HasValue)
+            {
+                bookings = bookings.Where(b => b.BookingDate >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                bookings = bookings.Where(b => b.BookingDate <= endDate.Value);
+            }
+
+            if (!string.IsNullOrEmpty(availability))
+            {
+                bookings = bookings.Where(b => b.Venue.AvailabilityStatus == availability);
+            }
+
+            ViewBag.EventTypes = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name");
+            ViewBag.AvailabilityOptions = new SelectList(new[] { "Available", "Unavailable" });
+
             return View(await bookings.ToListAsync());
         }
     }

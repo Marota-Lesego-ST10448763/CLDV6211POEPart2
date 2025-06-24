@@ -4,6 +4,8 @@ using EventEase.Models;
 using EventEase.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EventEase.Controllers
 {
@@ -18,29 +20,64 @@ namespace EventEase.Controllers
             _blobService = blobService;
         }
 
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index(string search, int? eventTypeId, DateTime? startDate, DateTime? endDate, string availability)
         {
-            var events = _context.Events.Include(e => e.Venue).AsQueryable();
+            var events = _context.Events
+                .Include(e => e.Venue)
+                .Include(e => e.EventType)
+                .AsQueryable();
 
+            // 🔍 Keyword Search
             if (!string.IsNullOrEmpty(search))
             {
                 events = events.Where(e =>
                     e.EventName.Contains(search) ||
-                    // e.Type.Contains(search) ||  // Comment out this reference
+                    e.EventType.Name.Contains(search) ||
                     e.Venue.VenueName.Contains(search));
             }
+
+            // 🔍 Filter: Event Type
+            if (eventTypeId.HasValue)
+            {
+                events = events.Where(e => e.EventTypeID == eventTypeId.Value);
+            }
+
+            // 🔍 Filter: Start Date
+            if (startDate.HasValue)
+            {
+                events = events.Where(e => e.EventDateTime >= startDate.Value);
+            }
+
+            // 🔍 Filter: End Date
+            if (endDate.HasValue)
+            {
+                events = events.Where(e => e.EventDateTime <= endDate.Value);
+            }
+
+            // 🔍 Filter: Venue Availability
+            if (!string.IsNullOrEmpty(availability))
+            {
+                events = events.Where(e => e.Venue.AvailabilityStatus == availability);
+            }
+
+            // Dropdown ViewBags for filters
+            ViewBag.EventTypes = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name");
+            ViewBag.AvailabilityOptions = new SelectList(new[] { "Available", "Unavailable" });
 
             ViewData["Alert"] = TempData["Alert"];
             ViewData["AlertType"] = TempData["AlertType"];
             return View(await events.ToListAsync());
         }
 
+
         // GET: Event/Create
         public async Task<IActionResult> Create()
         {
+            ViewBag.EventTypeID = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name");
             ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName");
             return View();
         }
+
 
         // POST: Event/Create
         [HttpPost]
@@ -48,24 +85,17 @@ namespace EventEase.Controllers
         public async Task<IActionResult> Create(Event @event)
         {
             ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", @event.VenueID);
-
-            Console.WriteLine("POST Create called");
+            ViewBag.EventTypeID = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name", @event.EventTypeID);
 
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("ModelState is invalid");
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine($"Error: {error.ErrorMessage}");
-                }
                 return View(@event);
             }
 
             _context.Events.Add(@event);
             await _context.SaveChangesAsync();
 
-            Console.WriteLine("Event saved");
-            TempData["Alert"] = "Event creation successfully.";
+            TempData["Alert"] = "Event created successfully.";
             TempData["AlertType"] = "success";
             return RedirectToAction(nameof(Index));
         }
@@ -80,6 +110,7 @@ namespace EventEase.Controllers
             if (@event == null) return NotFound();
 
             ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", @event.VenueID);
+            ViewBag.EventTypeID = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name", @event.EventTypeID);
             return View(@event);
         }
 
@@ -97,6 +128,7 @@ namespace EventEase.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.VenueID = new SelectList(await _context.Venues.ToListAsync(), "VenueID", "VenueName", @event.VenueID);
+                ViewBag.EventTypeID = new SelectList(await _context.EventTypes.ToListAsync(), "EventTypeID", "Name", @event.EventTypeID );
                 return View(@event);
             }
 
@@ -112,7 +144,7 @@ namespace EventEase.Controllers
 
             _context.Update(@event);
             await _context.SaveChangesAsync();
-            TempData["Alert"] = "Event update successfully.";
+            TempData["Alert"] = "Event updated successfully.";
             TempData["AlertType"] = "success";
             return RedirectToAction(nameof(Index));
         }
@@ -122,7 +154,10 @@ namespace EventEase.Controllers
         {
             if (id == null) return NotFound();
 
-            var @event = await _context.Events.Include(e => e.Venue).FirstOrDefaultAsync(m => m.EventID == id);
+            var @event = await _context.Events
+                .Include(e => e.Venue)
+                .Include(e => e.EventType)
+                .FirstOrDefaultAsync(m => m.EventID == id);
             return @event == null ? NotFound() : View(@event);
         }
 
@@ -131,7 +166,10 @@ namespace EventEase.Controllers
         {
             if (id == null) return NotFound();
 
-            var @event = await _context.Events.Include(e => e.Venue).FirstOrDefaultAsync(m => m.EventID == id);
+            var @event = await _context.Events
+                .Include(e => e.Venue)
+                .Include(e => e.EventType)
+                .FirstOrDefaultAsync(m => m.EventID == id);
             return @event == null ? NotFound() : View(@event);
         }
 
@@ -140,7 +178,9 @@ namespace EventEase.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var @event = await _context.Events.Include(e => e.Bookings).FirstOrDefaultAsync(e => e.EventID == id);
+            var @event = await _context.Events
+                .Include(e => e.Bookings)
+                .FirstOrDefaultAsync(e => e.EventID == id);
             if (@event == null) return NotFound();
 
             if (@event.Bookings.Any())
@@ -152,7 +192,7 @@ namespace EventEase.Controllers
 
             _context.Events.Remove(@event);
             await _context.SaveChangesAsync();
-            TempData["Alert"] = "Event deletion successfully.";
+            TempData["Alert"] = "Event deleted successfully.";
             TempData["AlertType"] = "success";
             return RedirectToAction(nameof(Index));
         }

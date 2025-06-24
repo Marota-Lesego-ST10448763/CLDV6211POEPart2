@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using EventEase.Models;
 using EventEase.Services;
 using EventEase.Models;
 using System;
@@ -47,7 +48,7 @@ namespace EventEase.Controllers
 
                 _context.Add(venue);
                 await _context.SaveChangesAsync();
-                TempData["Alert"] = "Venue creation successfully.";
+                TempData["Alert"] = "Venue created successfully.";
                 TempData["AlertType"] = "success";
                 return RedirectToAction(nameof(Index));
             }
@@ -85,7 +86,7 @@ namespace EventEase.Controllers
 
                 _context.Update(venue);
                 await _context.SaveChangesAsync();
-                TempData["Alert"] = "Venue update successfully.";
+                TempData["Alert"] = "Venue updated successfully.";
                 TempData["AlertType"] = "success";
                 return RedirectToAction(nameof(Index));
             }
@@ -123,7 +124,7 @@ namespace EventEase.Controllers
 
             if (venue.Events.Any() || venue.Bookings.Any())
             {
-                TempData["Alert"] = "Unable to delete venue with linked events or bookings.";
+                TempData["Alert"] = "Cannot delete venue with linked events or bookings.";
                 TempData["AlertType"] = "danger";
                 return RedirectToAction(nameof(Index));
             }
@@ -131,7 +132,7 @@ namespace EventEase.Controllers
             _context.Venues.Remove(venue);
             await _context.SaveChangesAsync();
 
-            TempData["Alert"] = "Venue deletion successfully.";
+            TempData["Alert"] = "Venue deleted successfully.";
             TempData["AlertType"] = "success";
             return RedirectToAction(nameof(Index));
         }
