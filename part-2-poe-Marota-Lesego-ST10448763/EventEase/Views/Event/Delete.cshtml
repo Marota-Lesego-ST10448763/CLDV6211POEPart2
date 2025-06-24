@@ -8,7 +8,7 @@
 
 <div class="mb-3">
     <strong>Name:</strong> @Model.EventName<br />
-    <strong>Type:</!strong> @Model.Type<br />
+    <strong>Type:</strong> @Model.EventType?.Name<br />
     <strong>Venue:</strong> @Model.Venue?.VenueName<br />
     <strong>Date:</strong> @Model.EventDateTime.ToShortDateString()<br />
     <strong>Time:</strong> @Model.EventDateTime.ToShortTimeString()<br />

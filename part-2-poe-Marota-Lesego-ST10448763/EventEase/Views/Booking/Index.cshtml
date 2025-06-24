@@ -15,12 +15,46 @@
     </div>
 }
 
-<form method="get" asp-action="Index" class="mb-3">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" placeholder="Search by Booking ID..." />
-        <button type="submit" class="btn btn-brown">Search</button>
+<form method="get" asp-action="Index" class="mb-4">
+    <div class="row g-2 align-items-end">
+        <div class="col-md-2">
+            <label class="form-label">Booking ID</label>
+            <input type="text" name="search" class="form-control" placeholder="Search ID..." />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Event Type</label>
+            <select name="eventTypeId" class="form-select">
+                <option value="">All</option>
+                @foreach (var type in ViewBag.EventTypes as SelectList)
+                {
+                    <option value="@type.Value">@type.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">End Date</label>
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Venue Availability</label>
+            <select name="availability" class="form-select">
+                <option value="">All</option>
+                @foreach (var item in ViewBag.AvailabilityOptions as SelectList)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-brown w-100">Filter</button>
+        </div>
     </div>
 </form>
+
 
 <a asp-action="Create" class="btn btn-brown mb-3">Add Booking</a>
 
@@ -53,3 +87,8 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+

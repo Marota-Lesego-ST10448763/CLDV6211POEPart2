@@ -21,9 +21,9 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Type"></label>
-        <input asp-for="Type" class="form-control" />
-        <span asp-validation-for="Type" class="text-danger"></span>
+        <label asp-for="EventTypeID">Event Type</label>
+        <select asp-for="EventTypeID" asp-items="ViewBag.EventTypeId" class="form-select"></select>
+        <span asp-validation-for="EventTypeID" class="text-danger"></span>
     </div>
 
     <div class="form-group">

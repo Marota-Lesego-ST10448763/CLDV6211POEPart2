@@ -9,7 +9,7 @@ namespace EventEase.Services
     public class AzureBlobStorage : IAzureBlobStorage
     {
         // 🔒 Old hardcoded connection string (restored by request)  HERE LESEGO
-        private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=eventeasebookingls;AccountKey=kSbgJqMth8na4I51SWon2mYiozUbDyPZNzcvAa7m4hCBJysOvj/+TbSH0pSXdO02I2ndjdzhj22C+ASthTV1Sg==;EndpointSuffix=core.windows.net";
+        private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=eventeasebookingsa;AccountKey=0j3wHs9fflbfSO6gM7XOCV+0VTsy6nl5B5SExy6lM0D6iMBr+4j9Jxxl6mkLTqWQhLPD5NNIB367+AStoCde+w==;EndpointSuffix=core.windows.net";
 
         // 🔒 Static container name
         private readonly string _containerName = "eventeasecontainer";

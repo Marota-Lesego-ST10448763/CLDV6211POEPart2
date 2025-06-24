@@ -16,14 +16,46 @@
     </div>
 }
 
-<form asp-action="Consolidated" method="get" class="mb-3">
-    <div class="input-group">
-        <input type="text" name="search" class="form-control" placeholder="Search by Booking ID or Event Name..." />
-        <button type="submit" class="btn btn-brown">
-            Search
-        </button>
+<form asp-action="Consolidated" method="get" class="mb-4">
+    <div class="row g-2 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label">Search</label>
+            <input type="text" name="search" class="form-control" placeholder="Booking ID or Event Name..." />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Event Type</label>
+            <select name="eventTypeId" class="form-select">
+                <option value="">All</option>
+                @foreach (var type in ViewBag.EventTypes as SelectList)
+                {
+                    <option value="@type.Value">@type.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">End Date</label>
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Venue Availability</label>
+            <select name="availability" class="form-select">
+                <option value="">All</option>
+                @foreach (var option in ViewBag.AvailabilityOptions as SelectList)
+                {
+                    <option value="@option.Value">@option.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-brown w-100">Filter</button>
+        </div>
     </div>
 </form>
+
 
 <table class="table table-bordered table-hover bg-white shadow-sm border-brown">
     <thead style="background-color: #f4f4f4;">
@@ -52,3 +84,7 @@
 <a asp-action="Index" class="btn btn-secondary mt-3">
     Back to Bookings
 </a>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
