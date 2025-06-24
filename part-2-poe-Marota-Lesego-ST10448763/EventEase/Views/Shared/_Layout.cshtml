@@ -65,6 +65,11 @@
             color: #a94442;
         }
     </style>
+    <style>
+        .nav-link.active {
+            border-bottom: 2px solid #fff;
+        }
+    </style>
 </head>
 <body>
 
@@ -79,26 +84,33 @@
                 <!-- Left-aligned links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active fw-bold" : "")"
+                           href="@Url.Action("Index", "Home")">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Venue")">Venues</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Venue" ? "active fw-bold" : "")"
+                           href="@Url.Action("Index", "Venue")">Venues</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Event")">Events</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Event" ? "active fw-bold" : "")"
+                           href="@Url.Action("Index", "Event")">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Booking")">Bookings</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Booking" ? "active fw-bold" : "")"
+                           href="@Url.Action("Index", "Booking")">Bookings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Consolidated", "Booking")">Consolidated Bookings</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Consolidated" ? "active fw-bold" : "")"
+                           href="@Url.Action("Consolidated", "Booking")">Consolidated Bookings</a>
+
                     </li>
                 </ul>
 
                 <!-- Right-aligned link -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Privacy", "Home")">Privacy</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Privacy" ? "active fw-bold" : "")"
+                           href="@Url.Action("Privacy", "Home")">Privacy</a>
                     </li>
                 </ul>
             </div>
@@ -129,9 +141,17 @@
 
     </div>
 
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-3 text-muted small">
+        &copy; @DateTime.Now.Year - EventEase Cloud Platform
+    </footer>
+    
+    <!-- jQuery: REQUIRED for validation scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    
     @RenderSection("Scripts", required: false)
 </body>
 </html>
